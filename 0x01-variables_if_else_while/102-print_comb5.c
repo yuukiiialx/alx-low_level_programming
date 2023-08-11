@@ -11,31 +11,21 @@
 
 int main(void)
 {
-	int i, j, f_digit, s_digit, ff_digit, ss_digit;
+	int first_digit, second_digit;
 
-	for (i = 0; i < 100; i++)
+	for (first_digit = 0; first_digit <= 98; first_digit++)
 	{
-		f_digit = i % 10;
-		s_digit = i / 10;
-
-		for (j = i; j < 100; j++)
+		for (second_digit = first_digit + 1; second_digit <= 99; second_digit++)
 		{
-			ff_digit = j % 10;
-			ss_digit = j / 10;
-
-			if (s_digit < ss_digit)
+			putchar((first_digit / 10) + '0');
+			putchar((first_digit % 10) + '0');
+			putchar(' ');
+			putchar((second_digit / 10) + '0');
+			putchar((second_digit % 10) + '0');
+			if (first_digit != 98 || second_digit != 99)
 			{
-				putchar(s_digit + '0');
-				putchar(f_digit + '0');
-				putchar(32);
-				putchar(ss_digit + '0');
-				putchar(ff_digit + '0');
-
-				if (i < 99 || j < 99)
-				{
-					putchar(44);
-					putchar(32);
-				}
+				putchar(',');
+				putchar(' ');
 			}
 		}
 	}
@@ -43,4 +33,3 @@ int main(void)
 
 	return (0);
 }
-
