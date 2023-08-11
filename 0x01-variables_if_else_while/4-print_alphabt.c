@@ -5,7 +5,7 @@
 /**
  * main - Entry point of the program
  *
- * prints the alphabet in lowercase from a to z except q and e in uppercase
+ * prints the alphabet in lowercase from a to z except q and e
  *
  *
  *
@@ -18,7 +18,7 @@ int main(void)
 	do {
 		if (letters == 'q' || letters == 'e')
 	{
-		putchar(toupper(letters));
+		continue;
 	}
 	else
 	{
