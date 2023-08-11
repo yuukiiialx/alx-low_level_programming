@@ -16,11 +16,7 @@ int main(void)
 	char letters = 'a';
 
 	do {
-		if (letters == 'q' || letters == 'e')
-	{
-		continue;
-	}
-	else
+		if (letters != 'q' &&  letters != 'e')
 	{
 		putchar(letters);
 	}
