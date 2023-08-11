@@ -8,11 +8,11 @@
  * Return: Always 0
  */
 
-int main (void)
+int main(void)
 {
-	int f_digit, s_digit ,t_digit;
+	int i, f_digit, s_digit, t_digit;
 
-	for (int i = 0; i < 1000; i++)
+	for (i = 0; i < 1000; i++)
 	{
 		f_digit = i % 10;
 		s_digit = (i / 10) % 10;
