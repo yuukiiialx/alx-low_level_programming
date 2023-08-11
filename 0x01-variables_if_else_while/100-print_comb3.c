@@ -8,9 +8,9 @@
  */
 int main(void)
 {
-	int f_digit, s_digit;
+	int i, f_digit, s_digit;
 
-	for (int i = 0; i < 100; i++)
+	for (i = 0; i < 100; i++)
 	{
 		f_digit = i % 10;
 		s_digit = i / 10;
