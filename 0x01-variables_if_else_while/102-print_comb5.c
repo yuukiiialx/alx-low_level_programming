@@ -11,14 +11,14 @@
 
 int main(void)
 {
-	int i, f_digit, s_digit, ff_digit, ss_digit;
+	int i, j, f_digit, s_digit, ff_digit, ss_digit;
 
 	for (i = 0; i < 100; i++)
 	{
 		f_digit = i % 10;
 		s_digit = i / 10;
 
-		for (int j = i; j < 100; j++)
+		for (j = i; j < 100; j++)
 		{
 			ff_digit = j % 10;
 			ss_digit = j / 10;
