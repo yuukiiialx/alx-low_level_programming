@@ -18,7 +18,7 @@ int main(void)
 	printf("%lu", prev_num);
 	printf(", %lu", curr_num);
 
-	while (count < 98)
+	while (count < 100)
 	{
 		next_num = prev_num + curr_num;
 		if (next_num % 2 == 0)
