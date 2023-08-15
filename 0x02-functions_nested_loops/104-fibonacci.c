@@ -9,10 +9,10 @@
  */
 int main(void)
 {
-	unsigned long long prev_num = 1;
-	unsigned long long curr_num = 2;
-	unsigned long long even_sum = 0;
-	unsigned long long next_num;
+	unsigned long prev_num = 1;
+	unsigned long curr_num = 2;
+	unsigned long even_sum = 0;
+	unsigned long next_num;
 	int count = 2;
 
 	printf("%llu", prev_num);
