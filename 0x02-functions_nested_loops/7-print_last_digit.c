@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include <main.h>
 
 
 /**
@@ -18,7 +18,8 @@ int print_last_digit(int num)
 
 	if (num < 0)
 	{
-		return (last_digit * -1);
+		last_digit *= -1;
 	}
+	_putchar(last_digit + '0');
 	return (last_digit);
 }
