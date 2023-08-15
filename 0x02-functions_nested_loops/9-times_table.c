@@ -14,25 +14,18 @@
  * Return: None (void)
  */
 
-void times_table(void)
+int times_table(void)
 {
 	int i, j, result;
 
 	for (i = 0; i < 10; i++)
 	{
-		for (j = 0; j < 10; j++)
+		_putchar('0');
+		for (j = 1; j < 10; j++)
 		{
 			result = i * j;
-			_putchar(i + '0');
+			_putchar(', ');
 			_putchar(' ');
-			_putchar('x');
-			_putchar(' ');
-			_putchar(j + '0');
-			_putchar(' ');
-			_putchar('=');
-			_putchar(' ');
-
-
 			if (result >= 10)
 			{
 				_putchar(result / 10 + '0');
@@ -42,8 +35,7 @@ void times_table(void)
 				_putchar(' ');
 			}
 			_putchar(result % 10 + '0');
-			_putchar('\n');
 		}
+		_putchar('\n');
 	}
 }
-
