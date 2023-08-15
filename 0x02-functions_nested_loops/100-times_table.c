@@ -16,7 +16,7 @@
  * Return: None (void)
  */
 
-int print_times_table(num)
+void print_times_table(int num)
 {
 	int i, j, result;
 

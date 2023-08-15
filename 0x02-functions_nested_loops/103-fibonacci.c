@@ -9,9 +9,9 @@
  *				in the Fibonacci sequence
  * that do not exceed 4,000,000 and prints the result followed by a newline.
  *
- * Return: 0
+ * Return: none
  */
-int main(void)
+void  main(void)
 {
 	int prev_num = 1;
 	int curr_num = 2;

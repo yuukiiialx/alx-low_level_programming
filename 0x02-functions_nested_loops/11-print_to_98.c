@@ -16,7 +16,7 @@
  * Return: None (void)
  */
 
-int print_to_98(num)
+void print_to_98(int num)
 {
 	int i;
 

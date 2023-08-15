@@ -14,7 +14,7 @@
  * Return: None (void)
  */
 
-int times_table(void)
+void times_table(void)
 {
 	int i, j, result;
 

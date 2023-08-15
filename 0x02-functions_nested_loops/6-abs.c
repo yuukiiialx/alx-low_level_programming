@@ -10,7 +10,7 @@
  * Return: The absolute value of the number
  */
 
-int _abs(num)
+int _abs(int num)
 {
 	if (num < 0)
 	{
