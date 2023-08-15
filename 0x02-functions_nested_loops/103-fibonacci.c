@@ -11,7 +11,7 @@
  *
  * Return: none
  */
-void  main(void)
+int main(void)
 {
 	int prev_num = 1;
 	int curr_num = 2;
