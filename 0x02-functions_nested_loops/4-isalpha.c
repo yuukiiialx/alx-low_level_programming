@@ -5,7 +5,7 @@
  *	_isalpha - Checks if a character is an alphabetic letter.
  *
  *	Description: check if string is lowercase or not using
- *			_isalpha() function
+ *			_isalpha function
  *			if character is letter then return 1
  *			else return 0
  *	@character: The character to be checked.
