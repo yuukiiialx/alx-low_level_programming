@@ -2,35 +2,48 @@
 #include <stdlib.h>
 
 /**
- * main - Prints the first 98 Fibonacci numbers and
- *          calculates the sum of the even numbers
+ * main - Entry point of the program.
  *
- * Return: 0
+ * This program generates and prints a Fibonacci sequence up to a certain limit.
+ * It starts with two initial values, previousFibonacci (1) and nextFibonacci (2).
+ * It then calculates the next Fibonacci number by adding the previous two numbers.
+ * The sequence is printed using printf until reaching the limit of 91 terms.
+ * After that, it continues printing the remaining terms in a modified format.
+ *
+ * Return: Always 0
  */
+
+
 int main(void)
 {
-	unsigned long prev_num = 1;
-	unsigned long curr_num = 2;
-	unsigned long even_sum = 0;
-	unsigned long next_num;
-	int count = 2;
+	unsigned long currentFibonacci, previousFibonacci, nextFibonacci;
+	unsigned long previousFibonacci1, previousFibonacci2, nextFibonacci1, nextFibonacci2;
 
-	printf("%lu", prev_num);
-	printf(", %lu", curr_num);
+	previousFibonacci = 1;
+	nextFibonacci = 2;
 
-	while (count < 100)
+	printf("%lu", previousFibonacci);
+
+	for (currentFibonacci = 1; currentFibonacci < 91; currentFibonacci++)
 	{
-		next_num = prev_num + curr_num;
-		if (next_num % 2 == 0)
-		{
-			even_sum += next_num;
-		}
+		printf(", %lu", nextFibonacci);
+		nextFibonacci = nextFibonacci + previousFibonacci;
+		previousFibonacci = nextFibonacci - previousFibonacci;
+	}
 
-		printf(", %lu", next_num);
+	previousFibonacci1 = previousFibonacci / 1000000000;
+	previousFibonacci2 = previousFibonacci % 1000000000;
+	nextFibonacci1 = nextFibonacci / 1000000000;
+	nextFibonacci2 = nextFibonacci % 1000000000;
 
-		prev_num = curr_num;
-		curr_num = next_num;
-		count++;
+	for (currentFibonacci = 92; currentFibonacci < 99; currentFibonacci++)
+	{
+		printf(", %lu", nextFibonacci1 + (nextFibonacci2 / 1000000000));
+		printf("%lu", nextFibonacci2 % 1000000000);
+		nextFibonacci1 = nextFibonacci1 + previousFibonacci1;
+		previousFibonacci1 = nextFibonacci1 - previousFibonacci1;
+		nextFibonacci2 = nextFibonacci2 + previousFibonacci2;
+		previousFibonacci2 = nextFibonacci2 - previousFibonacci2;
 	}
 
 	printf("\n");
