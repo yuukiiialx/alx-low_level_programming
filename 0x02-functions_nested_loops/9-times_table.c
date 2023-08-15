@@ -14,7 +14,7 @@
  * Return: None (void)
  */
 
-int times_table(void)
+void times_table(void)
 {
 	int i, j, result;
 
@@ -24,7 +24,7 @@ int times_table(void)
 		for (j = 1; j < 10; j++)
 		{
 			result = i * j;
-			_putchar(', ');
+			_putchar(',');
 			_putchar(' ');
 			if (result >= 10)
 			{
