@@ -28,7 +28,7 @@ int main(void)
 		prev_num = curr_num;
 		curr_num = next_num;
 	}
-	printf("%d", even_sum);
+	printf("%d\n", even_sum);
 	return (0);
 }
 
