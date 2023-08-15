@@ -11,7 +11,7 @@
  * Return: 1 if positive, -1 if negative, 0 if zero
  */
 
-int print_sign(num)
+int print_sign(int num)
 {
 	if (num > 0)
 	{
