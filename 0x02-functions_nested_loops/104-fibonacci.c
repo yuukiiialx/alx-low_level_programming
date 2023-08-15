@@ -15,8 +15,8 @@ int main(void)
 	unsigned long next_num;
 	int count = 2;
 
-	printf("%llu", prev_num);
-	printf(", %llu", curr_num);
+	printf("%lu", prev_num);
+	printf(", %lu", curr_num);
 
 	while (count < 98)
 	{
@@ -26,7 +26,7 @@ int main(void)
 			even_sum += next_num;
 		}
 
-		printf(", %llu", next_num);
+		printf(", %lu", next_num);
 
 		prev_num = curr_num;
 		curr_num = next_num;
