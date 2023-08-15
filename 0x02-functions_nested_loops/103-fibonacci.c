@@ -29,5 +29,6 @@ int main(void)
 		curr_num = next_num;
 	}
 	printf("%d", even_sum);
+	return (0);
 }
 
