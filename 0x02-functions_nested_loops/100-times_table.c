@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-
 /**
  * print_times_table - Prints a multiplication table up to a specified number.
  *
@@ -19,32 +18,32 @@
 void print_times_table(int num)
 {
 	int i, j, result;
-
-	for (i = 0; i <= num; i++)
+    if (num >= 0 && num <= 15)
 	{
-		for (j = 0; j <= num; j++)
+			for (i = 0; i <= num; i++)
+	{
+		_putchar('0');
+		for (j = 1; j <= num; j++)
 		{
+			_putchar(',');
+			_putchar(' ');
 			result = i * j;
-			putchar(i + '0');
-			putchar(' ');
-			putchar('x');
-			putchar(' ');
-			putchar(j + '0');
-			putchar(' ');
-			putchar('=');
-			putchar(' ');
-
-
-			if (result >= 10)
+			if (result <= 99 && result <= 9)
 			{
-				putchar(result / 10 + '0');
+				_putchar(' ');
 			}
-			else
+			if (result >= 100)
 			{
-				putchar(' ');
+				_putchar((result / 100) + '0');
+				_putchar(((result / 10)) % 10 + '0');
 			}
-			putchar(result % 10 + '0');
-			putchar('\n');
+			else if (result <= 99 && result >= 10)
+			{
+				_putchar((result / 10) + '0');
+			}
+			_putchar((result % 10) + '0');
 		}
+		_putchar('\n');
+	}
 	}
 }
