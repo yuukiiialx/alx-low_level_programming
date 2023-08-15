@@ -48,7 +48,7 @@ int main(void)
 		previousFibonacci2 = nextFibonacci2 - previousFibonacci2;
 	}
 
-	printf('\n');
+	printf("\n");
 
 	return (0);
 }
