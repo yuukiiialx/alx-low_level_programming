@@ -2,7 +2,7 @@ int _putchar(char name);
 void print_alphabet(void);
 void print_alphabet_x10(void);
 int _islower(int character);
-int _isalpha(int character)
+int _isalpha(int character);
 int print_sign(int num);
 int _abs(int num);
 int print_last_digit(int num);
