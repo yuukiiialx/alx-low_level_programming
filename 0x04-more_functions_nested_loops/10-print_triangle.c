@@ -5,7 +5,7 @@
 
 /**
  * print_triangle - Prints a right-aligned triangle pattern
- *			of a given size using '#'
+ *				of a given size using '#'.
  *
  * @size: The size of the triangle to be printed.
  *
@@ -16,11 +16,7 @@ void print_triangle(int size)
 {
 	int i, j;
 
-	if (size == 0 || size < 0)
-	{
-		_putchar('\n');
-	}
-	else
+	if (size > 0)
 	{
 		for (j = 1; j <= size; j++)
 		{
