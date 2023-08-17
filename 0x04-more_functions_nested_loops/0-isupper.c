@@ -9,13 +9,18 @@
  * Return: if uppercase 1 else 0
  */
 
-
 int _isupper(int c)
 {
-	if (c >= 'A' && <= 'Z')
-	{
-		return (1);
-	}
+	char start = 'A';
+	char end = 'Z';
+	int i;
 
+	for (i = start; i <= end; i++)
+	{
+		if (i == c)
+		{
+			return (1);
+		}
+	}
 	return (0);
 }
