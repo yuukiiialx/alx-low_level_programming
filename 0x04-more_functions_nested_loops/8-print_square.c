@@ -4,28 +4,27 @@
 
 
 /**
- * print_square - Prints a square made of hash symbols (#) with a given size.
+ * print_square - Prints a square of a given size using '#'.
+ *
  * @size: The size of the square to be printed.
  *
  * Return: void
- *
- * Description: If the input size is zero or less, only a new line is printed.
- *         Otherwise, a square of hash symbols is printed using nested loops.
- *              The square has a fixed size of 5x5.
  */
 
 
 void print_square(int size)
 {
+	int i, j;
+
 	if (size == 0 || size < 0)
 	{
 		_putchar('\n');
 	}
 	else
 	{
-		for (int i = 0; i < 5; i++)
+		for (i = 0; i < size; i++)
 		{
-			for (int j = 0; j < 5; j++)
+			for (j = 0; j < size; j++)
 			{
 				_putchar(35);
 			}
