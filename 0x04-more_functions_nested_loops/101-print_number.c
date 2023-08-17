@@ -12,7 +12,7 @@
 
 void print_number(int n)
 {
-	int digit, div = 1;
+	unsigned int digit, div = 1;
 
 	if (n < 0)
 	{
