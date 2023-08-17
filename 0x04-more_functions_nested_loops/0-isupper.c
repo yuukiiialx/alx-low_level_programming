@@ -12,15 +12,10 @@
 
 int _isupper(int c)
 {
-	char start = 'A';
-	char end = 'Z';
-
-	for (int i = start; i <= end; i++)
+	if (c >= 'A' && <= 'Z')
 	{
-		if (i == c)
-		{
-			return (1);
-		}
+		return (1);
 	}
+
 	return (0);
 }
