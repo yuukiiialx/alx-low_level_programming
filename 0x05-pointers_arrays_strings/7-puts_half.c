@@ -14,12 +14,13 @@
 void puts_half(char *str)
 {
 	int i, length;
-	int start = length / 2;
+	int start;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		length++;
 	}
+	start = length / 2;
 
 	for (i = start; str[i] != '\0'; i++)
 	{
