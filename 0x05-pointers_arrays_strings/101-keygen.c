@@ -12,17 +12,16 @@
 
 int main(void)
 {
-	char pass[14];
+	char pass[13];
 	int i;
 
 	srand(time(NULL));
 
-	for (i = 0; i < 13; i++)
+	for (i = 0; i < 12; i++)
 	{
-
-		pass[i] = rand() % 94 + 33;
+		pass[i] = rand() % 26 + 'a';
 	}
-	pass[13] = '\0';
+	pass[12] = '\0';
 
 	printf("%s\n", pass);
 
