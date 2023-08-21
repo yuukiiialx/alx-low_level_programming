@@ -13,7 +13,7 @@
 
 void print_rev(char *s)
 {
-	int i, j, length = 0;
+	int i, length = 0;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
