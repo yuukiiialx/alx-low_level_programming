@@ -33,6 +33,10 @@ int _atoi(char *s)
 			result = result * 10 + (s[i] - '0');
 			dig = 1;
 		}
+		else if (dig)
+		{
+			break;
+		}
 		i++;
 	}
 
