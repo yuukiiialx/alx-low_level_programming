@@ -13,32 +13,26 @@ int _atoi(char *s)
 	int i = 0;
 	int sign = 1;
 	int result = 0;
-	int dig = 0;
 
 	while (s[i] != '\0')
 	{
-		if (s[i] == '-')
-		{
-			if (dig)
-				break;
+		if (s[i] == '-' && result == 0)
 			sign = -sign;
-		}
-		else if (s[i] == '+')
-		{
-			if (dig)
-				break;
-		}
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
-			result = result * 10 + (s[i] - '0');
-			dig = 1;
+			int digit = s[i] - '0';
+			int max_div10 = 214748364;
+
+			if (result > max_div10 || (result == max_div10 && digit > 7))
+				return ((sign == 1) ? 2147483647 : -2147483648);
+
+			result = result * 10 + digit;
 		}
-		else if (dig)
-		{
+		else if (result != 0)
 			break;
-		}
 		i++;
 	}
 
 	return (result * sign);
 }
+
