@@ -3,35 +3,36 @@
 #include "main.h"
 
 /**
- * _atoi - Converts a string to an integer
- * @s: The string to convert
+ * _atoi - Converts a string to an integer.
+ * @s: The string to convert.
  *
- * Return: The converted integer value
+ * Description: This function takes a string @s and converts it to an integer.
+ *              It processes characters until a non-digit character is
+ *              encountered after digits have been processed. The final
+ *              integer value is multiplied by the sign based on the presence
+ *              of '-' in the string.
+ *
+ * Return: The converted integer value.
  */
 int _atoi(char *s)
 {
-	int signal = 1;
-	unsigned int result = 0;
-	int i;
+	int sign = 1;
+	unsigned int n = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if (s[i] == '-')
+	do {
+		if (*s == '-')
 		{
-			signal *= -1;
+			sign *= -1;
 		}
-		else if (s[i] >= '0' && s[i] <= '9')
+		else if (*s >= '0' && *s <= '9')
 		{
-			unsigned int digit = s[i] - '0';
-
-			result = result * 10 + digit;
+			n = (n * 10) + (*s - '0');
 		}
-		else if (result > 0)
+		else if (n > 0)
 		{
 			break;
 		}
-	}
+	} while (*s++);
 
-	return (result * signal);
+	return (n * sign);
 }
-
