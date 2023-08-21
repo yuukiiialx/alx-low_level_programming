@@ -1,30 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 /**
  * main - Entry point of the program.
  *
- * Description: This program generates a random password that consists of
- * ASCII characters within the range of '!' (33) to '~' (126), and prints it.
+ * Description: This program generates a sequence of characters based on random
+ * numbers and accumulates them until the accumulated value reaches 2772.
+ * It then calculates the difference between 2772 and the accumulated value
+ * and prints the characters accordingly.
  *
  * Return: 0
  */
 
 int main(void)
 {
-	char pass[13];
-	int i;
+	int n;
+	char c;
 
 	srand(time(NULL));
-
-	for (i = 0; i < 12; i++)
+	while (n <= 2645)
 	{
-		pass[i] = rand() % 26 + 'a';
+		c = rand() % 128;
+		n += c;
+		putchar(c);
 	}
-	pass[12] = '\0';
-
-	printf("%s\n", pass);
-
+	putchar(2772 - n);
 	return (0);
 }
 
