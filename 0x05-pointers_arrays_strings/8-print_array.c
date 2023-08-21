@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "main.h"
+
 /**
  * print_array - Prints an array of integers.
  * @a: Pointer to the array of integers.
