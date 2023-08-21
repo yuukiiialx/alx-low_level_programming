@@ -11,7 +11,7 @@
 int _atoi(char *s)
 {
 	int signal = 1;
-	int result = 0;
+	unsigned int result = 0;
 	int i;
 
 	for (i = 0; s[i] != '\0'; i++)
@@ -22,7 +22,7 @@ int _atoi(char *s)
 		}
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
-			int digit = s[i] - '0';
+			unsigned int digit = s[i] - '0';
 
 			result = result * 10 + digit;
 		}
