@@ -3,43 +3,49 @@
 #include "main.h"
 
 /**
- * cap_string - Capitalizes the first letter of each word in a string
- * @s: The string to be capitalized
+ * cap_string - Capitalizes the first letter of each word in a string,
+ * considering specific delimiters.
  *
- * Description: This function takes a string as input
- *			and capitalizes the first letter
- *          of each word in the string. It considers words
- *			as separated by spaces,
- *          tabs, newlines, commas, semicolons,
- *			periods, exclamation marks,
- *          question marks, double quotes, parentheses, and curly brackets.
+ * This function iterates through the input string and
+ * capitalizes the first letter of each word
+ * after certain delimiters like space, tab, newline,
+ * comma, semicolon, period, exclamation mark,
+ * question mark, double quotation mark, open parenthesis,
+ * close parenthesis, open curly brace,
+ * close curly brace, and beginning of the string.
  *
- * Return: The capitalized string
+ * @str: The input string to be capitalized.
+ * Return: A pointer to the modified string with capitalized words.
  */
 
 
-char *cap_string(char *s)
+char *cap_string(char *str)
 {
-	int i, j;
-	char words[] = {' ', '\t', '\n', ',', ';', '.'
-		, '!', '?', '"', '(', ')', '{', '}'};
+	int i = 0;
 
-	if (*(s + i) >= 'a' && *(s + i) <= 'z')
-		*(s + i) = *(s + i) - 32;
-	i++;
+	while (str[i])
+	{
+		while (!(str[i] >= 'a' && str[i] <= 'z'))
+			i++;
 
-	do {
-		for (j = 0; j < 13; j++)
-		{
-			if (*(s + i) == words[j])
-			{
-				if ((*(s + (i + 1)) >= 'a') && (*(s + (i + 1)) <= 'z'))
-					*(s + (i + 1)) = *(s + (i + 1)) - 32;
-				break;
-			}
-		}
+		if (str[i - 1] == ' ' ||
+			str[i - 1] == '\t' ||
+			str[i - 1] == '\n' ||
+			str[i - 1] == ',' ||
+			str[i - 1] == ';' ||
+			str[i - 1] == '.' ||
+			str[i - 1] == '!' ||
+			str[i - 1] == '?' ||
+			str[i - 1] == '"' ||
+			str[i - 1] == '(' ||
+			str[i - 1] == ')' ||
+			str[i - 1] == '{' ||
+			str[i - 1] == '}' ||
+			i == 0)
+			str[i] -= 32;
+
 		i++;
-	} while (*(s + i) != '\0');
+	}
 
-	return (s);
+	return (str);
 }
