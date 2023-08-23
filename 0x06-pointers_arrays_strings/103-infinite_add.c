@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
-
+char *infinite_add(char *n1, char *n2, char *r, int size_r);
+int get_string_length(char *str);
+void reverse_string(char *str, int length);
+void perform_addition(char *n1, char *n2, char *r, int len_n1, int len_n2);
 /**
  * infinite_add - Adds two numbers stored as strings
  * @n1: First number as a string
