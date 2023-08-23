@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+
 char *infinite_add(char *n1, char *n2, char *r, int size_r);
 int get_string_length(char *str);
-void reverse_string(char *str, int length);
 void perform_addition(char *n1, char *n2, char *r, int len_n1, int len_n2);
+void reverse_string(char *str, int length);
+
 /**
  * infinite_add - Adds two numbers stored as strings
  * @n1: First number as a string
@@ -28,7 +30,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int len_n1 = get_string_length(n1);
 	int len_n2 = get_string_length(n2);
 
-	if (len_n1 == 0 || len_n2 == 0 || size_r <= len_n1 + 1)
+	if (len_n1 == 0 || len_n2 == 0 || size_r <= len_n1 + 2)
 	{
 		return (0);
 	}
@@ -42,7 +44,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	}
 	else
 	{
-		reverse_string(r, len_n1);
+		reverse_string(r, len_n1 + 1);
 		return (r);
 	}
 }
@@ -89,7 +91,7 @@ void perform_addition(char *n1, char *n2, char *r, int len_n1, int len_n2)
 		k = m + n + add;
 		add = k / 10;
 
-		r[len_n1 - i] = (k % 10) + '0';
+		r[len_n1 - i + 1] = (k % 10) + '0';
 	}
 }
 
@@ -115,4 +117,3 @@ void reverse_string(char *str, int length)
 		end--;
 	}
 }
-
