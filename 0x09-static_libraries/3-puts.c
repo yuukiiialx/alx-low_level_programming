@@ -1,24 +1,12 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include <ctype.h>
+#include <string.h>
 
-
-/**
- * _puts - Prints a string followed by a newline.
- * @str: Pointer to the input string.
- *
- * Description: This function takes a pointer to a null-terminated string
- * and prints its characters followed by a newline using the _putchar function.
- */
-
-void _puts(char *str)
+void _puts(char *s)
 {
-	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
-	}
-	_putchar('\n');
+    puts(s);
 }
+
 
