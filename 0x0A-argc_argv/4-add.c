@@ -27,18 +27,23 @@ int main(int argc, char *argv[])
 
 	for (int i = 1; i < argc; i++)
 	{
-		int num = atoi(argv[i]);
+		char *c = argv[i];
 
-		if (num == 0)
+		while (*c)
 		{
-			printf("Error\n");
-			return (1);
+			if (*c < '0' || *c > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
+			c++;
 		}
 
-		sum += num;
+		sum += atoi(argv[i]);
 	}
 
 	printf("%d\n", sum);
 
 	return (0);
 }
+
