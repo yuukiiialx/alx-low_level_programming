@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	int cents, coinc = 0, coinv[] = {25, 10, 5, 2, 1};
+	int i, cents, coinc = 0, coinv[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	cents = atoi(argv[1]);
 
-	for (int i = 0; i < sizeof(coinv) / sizeof(coinv[0]); i++)
+	for (i = 0; i < sizeof(coinv) / sizeof(coinv[0]); i++)
 	{
 		while (cents >= coinv[i])
 		{
