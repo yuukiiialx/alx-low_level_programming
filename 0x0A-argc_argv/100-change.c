@@ -9,39 +9,43 @@
  * Description: This program calculates the minimum number of coins required
  * to make change for a given amount of cents.
  *
- * Return: 0
+ * Return: 0 for success, 1 for error
  */
-
 int main(int argc, char *argv[])
 {
-	int coins = 0, sum = 0;
+	int cents, coins = 0;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-
-	sum = atoi(argv[1]);
-
-	if (sum < 0)
+	cents = atoi(argv[1]);
+	while (cents > 0)
 	{
-		printf("0\n");
-		return (0);
-	}
-
-	int coin_values[] = {25, 10, 5, 2, 1};
-	int i;
-
-	for (i = 0; i < sizeof(coin_values) / sizeof(coin_values[0]); i++)
-	{
-		while (sum / coin_values[i])
+		coins++;
+		if ((cents - 25) >= 0)
 		{
-			sum -= coin_values[i];
-			coins++;
+			cents -= 25;
+			continue;
 		}
+		if ((cents - 10) >= 0)
+		{
+			cents -= 10;
+			continue;
+		}
+		if ((cents - 5) >= 0)
+		{
+			cents -= 5;
+			continue;
+		}
+		if ((cents - 2) >= 0)
+		{
+			cents -= 2;
+			continue;
+		}
+		cents--;
 	}
-
 	printf("%d\n", coins);
 	return (0);
 }
