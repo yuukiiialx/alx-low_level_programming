@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i, cents, coinc = 0, coinv[] = {25, 10, 5, 2, 1};
+	int coins = 0, sum = 0;
 
 	if (argc != 2)
 	{
@@ -22,17 +22,27 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	cents = atoi(argv[1]);
+	sum = atoi(argv[1]);
 
-	for (i = 0; i < sizeof(coinv) / sizeof(coinv[0]); i++)
+	if (sum < 0)
 	{
-		while (cents >= coinv[i])
+		printf("0\n");
+		return (0);
+	}
+
+	int coin_values[] = {25, 10, 5, 2, 1};
+	int i;
+
+	for (i = 0; i < sizeof(coin_values) / sizeof(coin_values[0]); i++)
+	{
+		while (sum / coin_values[i])
 		{
-			cents -= coinv[i];
-			coinc++;
+			sum -= coin_values[i];
+			coins++;
 		}
 	}
 
-	printf("%d\n", coinc);
+	printf("%d\n", coins);
 	return (0);
 }
+
