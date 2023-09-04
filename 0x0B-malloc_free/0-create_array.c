@@ -4,18 +4,17 @@
 
 /**
  * create_array - Creates an array of characters and
- *			initializes it with a given character.
+ * initializes it with a given character.
  * @size: The size of the array to create.
  * @c: The character to initialize the array elements with.
  *
  * Return: A pointer to the newly created array,
- *		or NULL if size is 0 or if memory allocation fails.
+ *         or NULL if size is 0 or if memory allocation fails.
  */
-
-
 char *create_array(unsigned int size, char c)
 {
 	unsigned int i;
+	char *array;
 
 	if (size == 0)
 	{
@@ -33,6 +32,7 @@ char *create_array(unsigned int size, char c)
 	{
 		array[i] = c;
 	}
+
 	return (array);
 }
 
