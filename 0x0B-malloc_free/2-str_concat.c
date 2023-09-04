@@ -30,14 +30,17 @@ int str_length(char *str)
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *concat_str;
-	int len1, len2, total_len, i, j;
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-	len1 = str_length(s1);
-	len2 = str_length(s2);
-	total_len = len1 + len2 + 1;
+	int len1 = str_length(s1);
+	int len2 = str_length(s2);
+	int total_len = len1 + len2 + 1;
+	int i, j;
 
-	concat_str = malloc(total_len * sizeof(char));
+	char *concat_str = malloc(total_len * sizeof(char));
 
 	if (concat_str == NULL)
 	{
@@ -59,4 +62,3 @@ char *str_concat(char *s1, char *s2)
 
 	return (concat_str);
 }
-
