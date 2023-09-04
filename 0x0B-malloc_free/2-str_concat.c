@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+
 /**
  * str_length - Computes the length of a string.
  * @str: The string to compute the length of.
@@ -30,9 +31,11 @@ int str_length(char *str)
 char *str_concat(char *s1, char *s2)
 {
 	char *concat_str;
-	int len1 = str_length(s1);
-	int len2 = str_length(s2);
-	int total_len = len1 + len2 + 1;
+	int len1, len2, total_len, i, j;
+
+	len1 = str_length(s1);
+	len2 = str_length(s2);
+	total_len = len1 + len2 + 1;
 
 	concat_str = malloc(total_len * sizeof(char));
 
@@ -40,8 +43,6 @@ char *str_concat(char *s1, char *s2)
 	{
 		return (NULL);
 	}
-
-	int i, j;
 
 	for (i = 0; i < len1; i++)
 	{
