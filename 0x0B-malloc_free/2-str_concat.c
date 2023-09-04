@@ -1,6 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+/**
+ * str_length - Computes the length of a string.
+ * @str: The string to compute the length of.
+ *
+ * Return: The length of the string.
+ */
+int str_length(char *str)
+{
+	int length = 0;
+
+	while (str[length] != '\0')
+	{
+		length++;
+	}
+
+	return (length);
+}
 
 /**
  * str_concat - Concatenates two strings.
@@ -12,45 +29,33 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+	char *concat_str;
+	int len1 = str_length(s1);
+	int len2 = str_length(s2);
+	int total_len = len1 + len2 + 1;
 
-	int length_s1 = 0;
-	int length_s2 = 0;
-	int i = 0;
-	int j = 0;
+	concat_str = malloc(total_len * sizeof(char));
 
-	while (s1[length_s1] != '\0')
-	{
-		length_s1++;
-	}
-
-	while (s2[length_s2] != '\0')
-	{
-		length_s2++;
-	}
-
-	char *concatenated = malloc(sizeof(char) * (length_s1 + length_s2 + 1));
-
-	if (concatenated == NULL)
+	if (concat_str == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; s1[i] != '\0'; i++)
+	int i, j;
+
+	for (i = 0; i < len1; i++)
 	{
-		concatenated[i] = s1[i];
+		concat_str[i] = s1[i];
 	}
 
-	for (j = 0; s2[j] != '\0'; j++)
+	for (j = 0; j < len2; j++)
 	{
-		concatenated[i + j] = s2[j];
+		concat_str[i] = s2[j];
+		i++;
 	}
 
-	concatenated[i + j] = '\0';
+	concat_str[total_len - 1] = '\0';
 
-	return (concatenated);
+	return (concat_str);
 }
 
