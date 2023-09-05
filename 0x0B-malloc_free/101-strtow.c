@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
+
 /**
  * is_space - Checks if a character is a whitespace character.
  * @c: The character to check.
@@ -74,6 +75,25 @@ char *extract_word(char *str)
 }
 
 /**
+ * free_str_array - Frees the memory allocated for an array of strings.
+ * @str_arr: The array of strings to free.
+ * @count: The number of strings in the array.
+ */
+void free_str_array(char **str_arr, int count)
+{
+	int i;
+
+	if (str_arr)
+	{
+		for (i = 0; i < count; i++)
+		{
+			free(str_arr[i]);
+		}
+		free(str_arr);
+	}
+}
+
+/**
  * strtow - Splits a string into words based on spaces, tabs, and newlines.
  * @str: The input string.
  *
@@ -120,24 +140,5 @@ char **strtow(char *str)
 
 	result[i] = NULL;
 	return (result);
-}
-
-/**
- * free_str_array - Frees the memory allocated for an array of strings.
- * @str_arr: The array of strings to free.
- * @count: The number of strings in the array.
- */
-void free_str_array(char **str_arr, int count)
-{
-	int i;
-
-	if (str_arr)
-	{
-		for (i = 0; i < count; i++)
-		{
-			free(str_arr[i]);
-		}
-		free(str_arr);
-	}
 }
 
