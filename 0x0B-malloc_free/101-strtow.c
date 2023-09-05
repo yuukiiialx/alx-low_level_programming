@@ -1,144 +1,118 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * is_space - Checks if a character is a whitespace character.
- * @c: The character to check.
+ * strtow - Splits a string into words.
+ * @str: Input string to be split.
  *
- * Return: 1 if the character is a whitespace character, 0 otherwise.
- */
-int is_space(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n');
-}
-
-/**
- * count_words - Counts the number of words in a string.
- * @str: The input string.
+ * Return: Double pointer to an array of strings or NULL on error.
  *
- * Return: The number of words in the string.
+ * This function takes an input string and splits it into individual words
+ * based on spaces. It dynamically allocates memory for the words and returns
+ * a NULL-terminated array of strings. Remember to free the memory using
+ * free_str_arr() to prevent memory leaks.
  */
-int count_words(char *str)
-{
-	int count = 0;
-	int is_word = 0;
 
-	while (*str)
-	{
-		if (is_space(*str))
-		{
-			is_word = 0;
-		}
-		else if (!is_word)
-		{
-			is_word = 1;
-			count++;
-		}
-		str++;
-	}
-
-	return (count);
-}
-
-/**
- * extract_word - Extracts a word from a string.
- * @str: The input string.
- *
- * Return: A dynamically allocated string containing the word.
- */
-char *extract_word(char *str)
-{
-	int word_len = 0;
-	char *start = str;
-
-	while (*str && !is_space(*str))
-	{
-		word_len++;
-		str++;
-	}
-
-	char *word = (char *)malloc((word_len + 1) * sizeof(char));
-
-	if (word == NULL)
-	{
-		return (NULL);
-	}
-
-	for (int j = 0; j < word_len; j++)
-	{
-		word[j] = start[j];
-	}
-	word[word_len] = '\0';
-
-	return (word);
-}
-
-/**
- * free_str_array - Frees the memory allocated for an array of strings.
- * @str_arr: The array of strings to free.
- * @count: The number of strings in the array.
- */
-void free_str_array(char **str_arr, int count)
-{
-	int i;
-
-	if (str_arr)
-	{
-		for (i = 0; i < count; i++)
-		{
-			free(str_arr[i]);
-		}
-		free(str_arr);
-	}
-}
-
-/**
- * strtow - Splits a string into words based on spaces, tabs, and newlines.
- * @str: The input string.
- *
- * Return: A pointer to an array of strings (words).
- */
 char **strtow(char *str)
 {
-	if (str == NULL || *str == '\0')
-	{
+	char **sp;
+	int i, j = 0, k = 0, s = 0, words = num_words(str);
+
+	if (words == 0)
 		return (NULL);
+
+	sp = (char **)malloc(sof(char *) * (words + 1));
+	if (sp == NULL)
+		return (NULL);
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] != ' ')
+		{
+			s++;
+		}
+		else if (i > 0 && str[i - 1] != ' ')
+		{
+			sp[j] = (char *)malloc(sof(char) * (s + 1));
+			if (sp[j] == NULL)
+			{
+				while (j >= 0)
+				{
+					free(sp[j]);
+					j--;
+				}
+				free(sp);
+				return (NULL);
+			}
+
+			for (k = 0; k < s; k++)
+			{
+				sp[j][k] = str[i - s + k];
+			}
+			sp[j][k] = '\0';
+			s = 0;
+			j++;
+		}
 	}
 
-	int num_words = count_words(str);
-	char **result = (char **)malloc((num_words + 1) * sizeof(char *));
-
-	if (result == NULL)
+	if (s > 0)
 	{
-		return (NULL);
-	}
-
-	int i = 0;
-
-	while (*str)
-	{
-		while (is_space(*str))
+		sp[j] = (char *)malloc(sof(char) * (s + 1));
+		if (sp[j] == NULL)
 		{
-			str++;
-		}
-
-		if (*str == '\0')
-		{
-			break;
-		}
-
-		result[i] = extract_word(str);
-		if (result[i] == NULL)
-		{
-			free_str_array(result, i);
+			while (j >= 0)
+			{
+				free(sp[j]);
+				j--;
+			}
+			free(sp);
 			return (NULL);
 		}
 
-		i++;
+		for (k = 0; k < s; k++)
+		{
+			sp[j][k] = str[i - s + k];
+		}
+		sp[j][k] = '\0';
+		j++;
 	}
 
-	result[i] = NULL;
-	return (result);
+	sp[j] = NULL;
+	return (sp);
+}
+
+/**
+ * num_words - Counts the number of words in a string.
+ * @str: Input string to count words from.
+ *
+ * Return: The number of words in the string.
+ *
+ * This function calculates the number of words in the given input string by
+ * counting the sequences of non-space characters separated by spaces. It
+ * returns the total word count.
+ */
+
+int num_words(char *str)
+{
+	int i = 0, words = 0;
+
+	while (str[i])
+	{
+		if (str[i] != ' ')
+		{
+			words++;
+			while (str[i] && str[i] != ' ')
+			{
+				i++;
+			}
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	return (words);
 }
 
