@@ -1,142 +1,90 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "main.h"
 
 /**
- * count_words - Counts the number of words in a string.
- * @str: Input string to count words from.
+ * wrdcnt - Counts the number of words in a string.
+ * @s: Input string to count words from.
+ *
+ * This function counts the number of words in a given string.
+ * Words are separated by spaces. It considers consecutive spaces
+ * as a single separator and ignores leading and trailing spaces.
+ *
+ * @s: The input string to count words in.
  *
  * Return: The number of words in the string.
  */
-static int count_words(char *str);
+
+int wrdcnt(char *s)
+{
+	int index, numbers = 0;
+
+	for (index = 0; s[index]; index++)
+	{
+		if (s[index] == ' ')
+		{
+			if (s[index + 1] != ' ' && s[index + 1] != '\0')
+				numbers++;
+		}
+		else if (index == 0)
+			numbers++;
+	}
+	numbers++;
+	return (numbers);
+}
 
 /**
- * copy_word - Copies a word from the input string to a new buffer.
- * @start: Pointer to the start of the word in the input string.
- *
- * Return: A newly allocated buffer containing the copied word.
- */
-static char *copy_word(char *start);
-/**
  * strtow - Splits a string into words.
- * @str: Input string to be split.
+ * @str: Input string to be split into words.
+ *
+ * This function takes an input string and splits it into individual words,
+ * where words are separated by spaces. It dynamically allocates memory for
+ * each word and returns an array of pointers to these words.
+ *
+ * @str: The input string to be split.
  *
  * Return: Double pointer to an array of strings or NULL on error.
  */
+
 char **strtow(char *str)
 {
-	int i;
+	int index, j, temp, size, numbers = 0, words = 0;
+	char **w;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-
-	int num_words = count_words(str);
-
-	if (num_words == 0)
+	numbers = wrdcnt(str);
+	if (numbers == 1)
 		return (NULL);
-
-	char **words = (char **)malloc((num_words + 1) * sizeof(char *));
-
-	if (words == NULL)
+	w = (char **)malloc(numbers * sizeof(char *));
+	if (w == NULL)
 		return (NULL);
-
-	int word_index = 0;
-	bool in_word = false;
-	char *word_start = NULL;
-
-	for (i = 0; str[i]; i++)
+	w[numbers - 1] = NULL;
+	index = 0;
+	while (str[index])
 	{
-		if (str[i] != ' ')
+		if (str[index] != ' ' && (index == 0 || str[index - 1] == ' '))
 		{
-			if (!in_word)
+			for (j = 1; str[index + j] != ' ' && str[index + j]; j++)
+				;
+			j++;
+			w[words] = (char *)malloc(j * sizeof(char));
+			j--;
+			if (w[words] == NULL)
 			{
-				in_word = true;
-				word_start = str + i;
+				for (temp = 0; temp < words; temp++)
+					free(w[temp]);
+				free(w[numbers - 1]);
+				free(w);
+				return (NULL);
 			}
-		}
-		else if (in_word)
-		{
-			in_word = false;
-			words[word_index++] = copy_word(word_start);
-		}
-	}
-
-	if (in_word)
-		words[word_index++] = copy_word(word_start);
-
-	words[word_index] = NULL;
-	return (words);
-}
-
-/**
- * count_words - Counts the number of words in a string.
- * @str: The input string to count words in.
- *
- * Return: The number of words in the string.
- *
- * This function iterates through the input string
- *		and counts the number of words
- * based on spaces as word separators.
- *			It returns the count of words found in the string.
- */
-
-static int count_words(char *str)
-{
-	int count = 0;
-	bool in_word = false;
-
-	for (int i = 0; str[i]; i++)
-	{
-		if (str[i] != ' ')
-		{
-			if (!in_word)
-			{
-				in_word = true;
-				count++;
-			}
+			for (size = 0; size < j; size++)
+				w[words][size] = str[index + size];
+			w[words][size] = '\0';
+			words++;
+			index += j;
 		}
 		else
-		{
-			in_word = false;
-		}
+			index++;
 	}
-
-	return (count);
-}
-
-/**
- * copy_word - Copies a word from the given start position.
- * @start: Pointer to the start of the word.
- *
- * Return: A dynamically allocated string containing the copied word,
- *      or NULL on memory allocation failure.
- * This function copies a word from the input string starting at the specified
- * position until a space or the end of the string
- *				is encountered. It dynamically
- * allocates memory for the copied word and returns it.
- */
-
-static char *copy_word(char *start)
-{
-	int i;
-	int word_length = 0;
-
-	while (start[word_length] && start[word_length] != ' ')
-	{
-		word_length++;
-	}
-	char *word = (char *)malloc((word_length + 1) * sizeof(char));
-
-	if (word == NULL)
-		return (NULL);
-
-	for (i = 0; i < word_length; i++)
-	{
-		word[i] = start[i];
-	}
-	word[word_length] = '\0';
-
-	return (word);
+	return (w);
 }
 
