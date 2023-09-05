@@ -22,7 +22,7 @@ char **strtow(char *str)
 	if (words == 0)
 		return (NULL);
 
-	sp = (char **)malloc(sof(char *) * (words + 1));
+	sp = (char **)malloc(sizeof(char *) * (words + 1));
 	if (sp == NULL)
 		return (NULL);
 
@@ -34,7 +34,7 @@ char **strtow(char *str)
 		}
 		else if (i > 0 && str[i - 1] != ' ')
 		{
-			sp[j] = (char *)malloc(sof(char) * (s + 1));
+			sp[j] = (char *)malloc(sizeof(char) * (s + 1));
 			if (sp[j] == NULL)
 			{
 				while (j >= 0)
@@ -58,7 +58,7 @@ char **strtow(char *str)
 
 	if (s > 0)
 	{
-		sp[j] = (char *)malloc(sof(char) * (s + 1));
+		sp[j] = (char *)malloc(sizeof(char) * (s + 1));
 		if (sp[j] == NULL)
 		{
 			while (j >= 0)
