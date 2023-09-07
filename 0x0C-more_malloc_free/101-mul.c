@@ -10,8 +10,8 @@
  * It considers the length of the strings and the individual characters to
  * determine which number is larger.
  *
- * @number_one: The first number as a string
- * @number_two: The second number as a string
+ * @n1: The first number as a string
+ * @n2: The second number as a string
  *
  * Return:
  * - 1 if number_one is larger
@@ -19,30 +19,32 @@
  * - Recursively calls itself with incremented pointers if numbers are equal
  */
 
-int larger_num(char *number_one, char *number_two)
+
+int larger_num(char *n1, char *n2)
 {
-	int length_number_one, length_number_two;
+	int l1, l2;
 
-	length_number_one = strlen(number_one);
-	length_number_two = strlen(number_two);
+	l1 = strlen(n1);
+	l2 = strlen(n2);
 
-	if (length_number_one > length_number_two)
+	if (l1 > l2)
 		return (1);
-	else if (length_number_one < length_number_two)
+	else if (l1 < l2)
 		return (2);
-	else if ((*number_one == '\0') && (*number_two == '\0'))
+	else if ((*n1 == '\0') && (*n2 == '\0'))
 	{
 		return (1);
 	}
-	else if ((*number_one != '\0') && (*number_two != '\0'))
+	else if ((*n1 != '\0') && (*n2 != '\0'))
 	{
-		if (*number_one >= *number_two)
+		if (*n1 >= *n2)
 			return (1);
-		if (*number_one < *number_two)
+		if (*n1 < *n2)
 			return (2);
 	}
-	return ((larger_num(number_one++, number_two++)));
+	return ((larger_num(n1++, n2++)));
 }
+
 
 /**
  * is_number - Check if a string represents a valid number
@@ -51,23 +53,27 @@ int larger_num(char *number_one, char *number_two)
  * number. It examines each character in the string to determine if it falls
  * within the '0' to '9' range, indicating a valid digit.
  *
- * @number: The string to be checked
+ * @n: The string to be checked
  *
  * Return:
  * - 1 if the string represents a valid number
  * - 0 if the string does not represent a valid number
  */
 
-int is_number(char *number)
+
+
+int is_number(char *n)
 {
-	while (*number)
+	while (*n)
 	{
-		if (!((*number >= '0') && (*number <= '9')))
+		if (!((*n >= '0') && (*n <= '9')))
 			return (0);
-		number++;
+		n++;
 	}
 	return (1);
 }
+
+
 
 /**
  * mul_number - Multiply two numbers represented as strings
@@ -76,21 +82,26 @@ int is_number(char *number)
  * represented as strings. It takes two string arguments, `number_one`
  * and `number_two`, and performs the multiplication operation.
  *
- * @number_one: The first number as a string
- * @number_two: The second number as a string
+ * @n1: The first number as a string
+ * @n2: The second number as a string
  *
  * Return: NULL (Currently unimplemented)
  */
 
-char *mul_number(char *number_one, char *number_two)
-{
-	char **ver;
 
-	(void) ver;
-	(void) number_one;
-	(void) number_two;
+
+
+char *mul_number(char *n1, char *n2)
+{
+	char **v;
+
+	(void) v;
+	(void) n1;
+	(void) n2;
 	return (NULL);
 }
+
+
 
 /**
  * main - Entry point of the program
@@ -109,6 +120,7 @@ char *mul_number(char *number_one, char *number_two)
  * Return: 0 for success, 98 for errors in command-line
  *			arguments or number validity
  */
+
 
 int main(int argc, char *argv[])
 {
