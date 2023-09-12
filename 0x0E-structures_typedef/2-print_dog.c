@@ -1,22 +1,25 @@
-#include <stdio.h>
 #include "dog.h"
+#include <stdio.h>
 
 /**
- * main - Entry point
+ * print_dog - Prints a struct dog
  *
- * Description: Initializes a struct dog and calls the print_dog function to
- *              print its elements.
+ * @d: pointer to d dog
  *
- * Return: Always 0 (Success)
+ * Return: Pointer to struct
  */
-int main(void)
+
+void print_dog(struct dog *d)
 {
-	struct dog my_dog;
-
-	my_dog.name = "Poppy";
-	my_dog.age = 3.5;
-	my_dog.owner = "Bob";
-	print_dog(&my_dog);
-	return (0);
+	if (d == NULL)
+		return;
+	if (d->name == NULL)
+		printf("Name: (nil)\n");
+	else
+		printf("Name: %s\n", d->name);
+	printf("Age: %f\n", d->age);
+	if (d->owner == NULL)
+		printf("Owner: (nil)\n");
+	else
+		printf("Owner: %s\n", d->owner);
 }
-
